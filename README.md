@@ -120,10 +120,14 @@ Diseñar y desarrollar una **aplicación web profesional** para la gestión inte
 
 ---
 
-## DEGLOSE DEL PROYECTO
+## 📃 DEGLOSE DEL PROYECTO
 
 ### 🗃️ **Implementación de la base de datos**
 
+Para implementar la base de datos sobre la que se basa el proyecto hemos llevado a cabo los siguientes procesos: 
+
+- [📰 Diagrama E/R](https://github.com/gsanemeteriog/DAW1_EQUIPO2_2425/blob/main/Documentaci%C3%B3n/Diagrama%20Entidad%20Relaci%C3%B3n.png)
+- [📰 Script de la base de datos](https://github.com/Pablogg25/DAW2_EQUIPO_B_25-26/blob/main/Base%20de%20Datos/LaCremalleraBD_Actualizada.sql)
 
 
 ---
