@@ -112,8 +112,8 @@ Diseñar y desarrollar una **aplicación web profesional** para la gestión inte
 
 ## 🗓 Cronograma del proyecto (plantilla)
 
-- **Fase 1 — Análisis y diseño:** [fechas]
-- **Fase 2 — Backend / API:** [fechas]
+- **Fase 1 — Análisis y diseño:** [26 de Septiembre / 4 de Diciembre]
+- **Fase 2 — Backend / API:** [17 de Diciembre / 23 de Diciembre]
 - **Fase 3 — Frontend / UI:** [fechas]
 - **Fase 4 — Integración, pruebas y despliegue:** [fechas]
 - **Entrega final:** [Mediados de Febrero]
