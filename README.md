@@ -126,10 +126,26 @@ Diseñar y desarrollar una **aplicación web profesional** para la gestión inte
 
 Para implementar la base de datos sobre la que se basa el proyecto hemos llevado a cabo los siguientes procesos: 
 
-- [📰 Diagrama E/R](https://github.com/gsanemeteriog/DAW1_EQUIPO2_2425/blob/main/Documentaci%C3%B3n/Diagrama%20Entidad%20Relaci%C3%B3n.png)
+- [📰 Diagrama E/R]()
 - [📰 Script de la base de datos](https://github.com/Pablogg25/DAW2_EQUIPO_B_25-26/blob/main/Base%20de%20Datos/LaCremalleraBD_Actualizada.sql)
 
+---
 
+### 💻 **Desarrollo de la aplicación**
+
+Elementos y documentación de la aplicación.
+
+- [📰 Diagrama de clases]()
+- [📰 Diseño fisico logico]()
+
+---
+
+### 👨‍💻​ **Desarrollo de la página web**
+
+Página web del proyecto y la documentación que describe su estructura.
+ 
+- [📰 Web]()
+ 
 ---
 
 ## 📌 Licencia
