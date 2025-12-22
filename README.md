@@ -136,7 +136,7 @@ Para implementar la base de datos sobre la que se basa el proyecto hemos llevado
 Elementos y documentación de la aplicación.
 
 - [📰 Diagrama de clases]()
-- [📰 Diseño fisico logico]()
+- [📰 Diseño físico lógico de red](https://github.com/Pablogg25/DAW2_EQUIPO_B_25-26/blob/main/Documentaci%C3%B3n/Dise%C3%B1o%20f%C3%ADsico_l%C3%B3gico_%20red.png)
 
 ---
 
