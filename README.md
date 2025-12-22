@@ -120,6 +120,14 @@ Diseñar y desarrollar una **aplicación web profesional** para la gestión inte
 
 ---
 
+## DEGLOSE DEL PROYECTO
+
+### 🗃️ **Implementación de la base de datos**
+
+
+
+---
+
 ## 📌 Licencia
 
 Licencia a definir por el equipo (MIT probablemente).
