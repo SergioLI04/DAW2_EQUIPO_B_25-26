@@ -34,7 +34,7 @@ final class FuncionesDBNotificaciones
      */
     final public static function getNotificaciones()
     {
-        $q_selectNotificaciones = "SELECT * FROM notificaciones";
+       $q_selectNotificaciones = "SELECT id, mensaje FROM notificaciones";
 
         $conexion = ConexionDB::getConnection();
 
