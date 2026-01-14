@@ -61,15 +61,11 @@ final class FuncionesDBInventario{
      * - FuncionesDBException
      * - PDOException
      */
-   final public static function getItem($args){
-    // Cambiamos el nombre de la variable de la consulta
-    $sql_query = "SELECT * FROM inventario WHERE itemId = :id";
-
-    $itemId = $args['itemId'] ?? -1;
-
-    // Validación antigua (provocará conflicto con el filter_var de main)
-    if ($itemId < 0 || gettype($itemId) != 'integer') {
-        throw new FuncionesDBException("ERROR FUNCIONES BD (INVENTARIO): valor de itemId no reconocido");
+   final public static function getItem($args) 
+{
+    // Cambia esta línea también (la validación)
+    if (!isset($args['itemId'])) { 
+        throw new Exception("Error manual para forzar conflicto");
     }
 
     $conexion = ConexionDB::getConnection();
