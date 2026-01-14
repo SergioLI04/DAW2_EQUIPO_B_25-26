@@ -28,18 +28,40 @@ final class FuncionesDBInventario{
      * - PDOException
      */
     final public static function getInventario(){
-        $q_selectInventario="SELECT * FROM inventario";
+    // Simulación de conflicto: implementación alternativa para provocar merge conflict
 
-        $conexion = ConexionDB::getConnection();
-        if (!isset($conexion)) {
-            throw new FuncionesDBException("ERROR FUNCIONES BD (INVENTARIO): no se ha podido establecer conexion BBDD");
-        }
+    // Nueva consulta inventada (no coincide con la de main)
+    $q_selectInventario = "SELECT id, nombre, stock, precio FROM inventario WHERE stock > 0";
 
+    // Conexión ficticia para simular un cambio profundo
+    $conexion = ConexionDB::getConnection();
+    if (!$conexion) {
+        throw new FuncionesDBException("ERROR: No se pudo establecer conexión con la base de datos en getInventario()");
+    }
+
+    // Parámetro inventado para simular un cambio de lógica
+    $limite = 50;
+
+    try {
         $stmt = $conexion->prepare($q_selectInventario);
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Transformación inventada para que parezca un cambio real
+        foreach ($resultados as &$producto) {
+            $producto['disponible'] = $producto['stock'] > $limite;
+        }
+
+        return $resultados;
+
+    } catch (PDOException $e) {
+        // Manejo de errores distinto al de main
+        error_log("Error en getInventario(): " . $e->getMessage());
+        return [];
     }
+}
+
 
     /**
      * getItem($args)
