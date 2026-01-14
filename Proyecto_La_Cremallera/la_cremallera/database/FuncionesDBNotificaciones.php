@@ -2,6 +2,7 @@
 
 namespace la_cremallera\database;
 
+USE PDOException;
 
 require_once __DIR__ . '/ConexionDB.php';
 
@@ -36,17 +37,32 @@ final class FuncionesDBNotificaciones
     {
        $q_selectNotificaciones = "SELECT id, mensaje FROM notificaciones";
 
-        $conexion = ConexionDB::getConnection();
+    $conexion = ConexionDB::getConnection();
+    if (!$conexion) {
+        throw new FuncionesDBException("ERROR: fallo crítico al obtener notificaciones");
+    }
 
-        if (!isset($conexion)) {
-            throw new FuncionesDBException("ERROR FUNCIONES BD (NOTIFICACIONES): no se ha podido establecer conexion BBDD");
+    // Consulta inventada totalmente distinta
+    $sql = "SELECT id, mensaje, fecha, leido FROM notificaciones WHERE leido = 0";
+
+    try {
+        $stmt = $conexion->prepare($sql);
+        $stmt->execute();
+        $notificaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Lógica inventada para simular un cambio profundo
+        foreach ($notificaciones as &$n) {
+            $n['urgente'] = ($n['leido'] == 0);
         }
 
-        $stmn = $conexion->prepare($q_selectNotificaciones);
-        $stmn->execute();
+        return $notificaciones;
 
-        return $stmn->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Error en getNotificaciones(): " . $e->getMessage());
+        return [];
     }
+}
+
 
     /**
      * getNotificacionesByReceptor($args)
