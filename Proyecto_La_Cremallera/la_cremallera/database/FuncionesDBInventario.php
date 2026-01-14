@@ -59,25 +59,40 @@ final class FuncionesDBInventario{
      * - FuncionesDBException
      * - PDOException
      */
-    final public static function getItem($args){
-        $q_selectItem="SELECT * FROM inventario WHERE itemId = :id";
+    final public static function getItem(array $args): array 
+{
+    // 1. Validación estricta y limpieza de entrada
+    $itemId = filter_var($args['itemId'] ?? null, FILTER_VALIDATE_INT);
 
-        $itemId=$args['itemId']??-1;
+    if ($itemId === false || $itemId < 0) {
+        throw new FuncionesDBException("ERROR FUNCIONES BD (INVENTARIO): itemId inválido o no proporcionado");
+    }
 
-        if ($itemId < 0 || gettype($itemId) != 'integer') {
-            throw new FuncionesDBException("ERROR FUNCIONES BD (INVENTARIO): valor de itemId no reconocido");
-        }
-
+    try {
         $conexion = ConexionDB::getConnection();
-        if (!isset($conexion)) {
-            throw new FuncionesDBException("ERROR FUNCIONES BD (INVENTARIO): no se ha podido establecer conexion BBDD");
+        
+        // 2. Verificación de la conexión
+        if (!$conexion) {
+            throw new Exception("No se pudo establecer la conexión");
         }
 
+        // 3. Preparación y ejecución optimizada
+        $q_selectItem = "SELECT * FROM inventario WHERE itemId = :id LIMIT 1";
         $stmt = $conexion->prepare($q_selectItem);
         $stmt->execute([":id" => $itemId]);
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // 4. Retorno de un único registro (o array vacío si no existe)
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ?: [];
+
+    } catch (PDOException $e) {
+        // Log del error real para el desarrollador, pero excepción genérica para el sistema
+        error_log("Error en getItem: " . $e->getMessage());
+        throw new FuncionesDBException("ERROR FUNCIONES BD (INVENTARIO): Fallo al consultar la base de datos");
+    } catch (Exception $e) {
+        throw new FuncionesDBException("ERROR FUNCIONES BD (INVENTARIO): " . $e->getMessage());
     }
+}
 
     /**
      * getItemsBajoStock()
