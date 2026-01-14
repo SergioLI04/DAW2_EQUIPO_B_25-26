@@ -29,7 +29,8 @@ final class FuncionesDBInventario{
      */
     final public static function getInventario(){
     // Simulación de conflicto: implementación alternativa para provocar merge conflict
-
+    //Vamos a hacer el conflcito
+    echo "hola";
     // Nueva consulta inventada (no coincide con la de main)
     $q_selectInventario = "SELECT id, nombre, stock, precio FROM inventario WHERE stock > 0";
 
